@@ -1,0 +1,393 @@
+/*  ()  */
+
+/*GOOGLE FONT*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/*VARIABLES SMALL SCREEN*/
+
+/*COLOR*/
+:root{
+--hue: 220;
+--sat: 100%;
+
+--first-color: hsl(var(--hue), var(--sat), 60%);
+--first-color-alt: hsl(var(--hue), var(--sat), 36%);
+--title-color: hsl(var(--hue), 0%, 100%);
+--text-color: hsl(var(--hue), 10%, 75%);
+--body-color: hsl(var(--hue), 100%, 75%);
+--container-color: rgba(255, 255, 255, 0.082);
+
+
+/*FONT - 400, 500, 700*/
+--body-font: 'Roboto', sans-serif;
+--font-size-h1: 1.5rem;
+--font-size-938: .938rem;
+--font-size-625: .625rem;
+}
+
+/*VARIABLES - LARGE SCREEN*/
+@media screen and (min-width: 968px){
+    :root{
+     --font-size-h1: 2.25rem;
+     --font-size-1: 1rem;
+    }
+}
+
+
+
+
+
+
+/*BASE*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 3.5rem 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--font-size-1);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+button{
+    font-size: var(--font-size-1);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+/*CLASSES*/
+.section{
+    padding: 4.5rem 0 2rem;
+}
+
+.section__title{
+    font-size: var(--font-size-h1);
+    color: var(--title-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.section__height{
+    height: 100vh;
+}
+
+/*LAYOUT*/
+.container{
+    max-width: 968px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+
+
+
+
+/*HEADER*/
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color); 
+    box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, .15);
+    width: 100%;
+    z-index: 100;
+    transition: .4s;
+}
+
+
+
+
+
+/*NAV*/
+.nav{
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__img{
+    width: 55px;
+}
+
+.nav__logo{
+    color: var(--title-color);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px){
+    .nav__menu{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: var(--container-color);
+        box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, .15);
+        width: 100%;
+        height: 4rem;
+        padding: 0 2rem;
+        display: grid;
+        align-content: center;
+        transition: .4s;
+        backdrop-filter: blur(10px);
+    }
+
+    .nav__list,
+    .nav__link{
+        display: flex;
+    }
+
+    .nav__link{
+        flex-direction: column;
+        align-items: center;
+        row-gap: .25rem;
+        color: var(--title-color);
+        font-weight: 600;
+    }
+
+    .nav__list{
+        justify-content: space-between;
+    }
+
+    .nav__name{
+        font-size: var(--font-size-625);
+        display: none;
+    }
+
+    .nav__icon{
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+/*MODAL*/
+.modal{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.modal__button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 1rem 1.25rem;
+    border-radius: .5rem;
+    transition: .3s;
+}
+
+.modal__button:hover{
+    filter: brightness(1.1);
+}
+
+.modal__container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: flex-end;
+    overflow: hidden;
+    transition: all .3s;
+    z-index: 50;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.178);
+    backdrop-filter: blur(15px);
+}
+
+.modal__content{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.829);
+    box-shadow: 5px rgba(0, 0, 0, 0.123);
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-radius: 1rem 1rem 0 0;
+    backdrop-filter: blur(10px);
+    transition: all .3s;
+    bottom: 4rem;
+}
+
+.modal__img{
+    width: 150px;
+    margin-bottom: .75rem;
+}
+
+.modal__close{
+    display: inline-flex;
+    background-color: var(--body-color);
+    border-radius: .25rem;
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.modal__close:hover{
+    filter: brightness(1.1);
+}
+
+.modal__title{
+    font-size: var(--font-size-h1);
+    color: var(--first-color);
+    font-weight: 500;
+}
+
+.modal__description{
+    margin-bottom: 1.5rem;
+    color: var(--first-color);
+    opacity: 50%;
+}
+
+.modal__button-width{
+    width: 90%;
+}
+
+.modal__button-link{
+    display: block;
+    margin: 1rem auto 0;
+    background-color: transparent;
+    color: var(--first-color);
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+/*ACITVE-LINK JS*/
+.active-link{
+    position: relative;
+    color: var(--first-color);
+    transition: .3s;
+}
+
+/*MIN-LINK JS*/
+.active-link::before{
+    content: '';
+    position: absolute;
+    bottom: -.5rem;
+    width: 4px;
+    height: 4px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+}
+
+/*SHOW-MODAL JS*/
+.show-modal{
+    visibility: visible;
+    opacity: 1;
+}
+
+.show-modal
+.modal__content{
+
+}
+
+
+
+
+/*MEDIA QUERIES*/
+@media screen and (min-width: 576px){
+    .nav__list{
+        justify-content: center;
+        column-gap: 3rem;
+        display: flex;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .modal__content{
+        margin: auto;
+        width: 380px;
+        border-radius: 1.25rem;
+        top: 3rem;
+    }
+
+    .modal__img{
+        width: 180px;
+    }
+}
+
+@media screen and (min-width: 767px){
+    body{
+        margin: 0;
+    }
+
+    .section{
+        padding: 7rem 0 2rem;
+    }
+    
+    .nav{
+        height: 4.5rem;
+    }
+
+    .nav__icon{
+        display: none;
+    }
+
+    .nav__img{
+        width: 70px;
+    }
+
+    .nav__name{
+        font-size: var(--font-size-938);
+        display: block;
+    }
+
+    .nav__link{
+        color: #fff;
+        transition: .2s;
+    }
+
+    .nav__link:hover{
+        color: var(--first-color);
+    }
+
+    .active-link::before{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
